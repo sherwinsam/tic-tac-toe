@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Icon from "./components/icon";
 
+//Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+//Bootstrap
 import { Card, CardBody, Container, Button, Col, Row } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
+//CSS
 import "./App.css";
 
 const itemArray = new Array(9).fill("empty");
@@ -71,6 +74,17 @@ const App = () => {
       itemArray[2] !== "empty"
     ) {
       setWinMessage(`${itemArray[2]} wins`);
+    } else {
+      let isDraw = true;
+      for (let i = 0; i < itemArray.length; i++) {
+        if (itemArray[i] === "empty") {
+          isDraw = false;
+          break;
+        }
+      }
+      if (isDraw) {
+        setWinMessage("Game Draw");
+      }
     }
   };
 
